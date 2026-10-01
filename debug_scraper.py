@@ -9,6 +9,8 @@ from urllib.parse import urlencode, urljoin, urlparse, parse_qsl, urlunparse
 
 import requests
 
+from imperva_bypass import ensure_bypass
+
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
@@ -581,7 +583,16 @@ def parse_catalog(body):
 
 def collect(destinations):
     session = requests.Session()
-    print("=== homepage (establish session) ===")
+    print("=== imperva bypass (pure HTTP + Node sensor) ===")
+    bypass = ensure_bypass(session, entry_url=HOMEPAGE_URL)
+    print("sensor url:", bypass.sensor_url or "(none)")
+    print("reese84:", bypass.reese84)
+    print("___utmvc:", bypass.utmvc)
+    print("bypass ok:", bypass.bypass_ok)
+    if bypass.errors:
+        print("bypass notes:", "; ".join(bypass.errors[:3]))
+
+    print("\n=== homepage (establish session) ===")
     session_response = get_page(session, HOMEPAGE_URL)
     print("session status:", session_response.status_code)
 
@@ -640,14 +651,16 @@ def collect(destinations):
         )
 
     stored_reese = any(cookie.name == "reese84" for cookie in session.cookies)
+    stored_utmvc = any(cookie.name == "___utmvc" for cookie in session.cookies)
     print("\n=== session check ===")
     print("[1] homepage session:", session_response.status_code == 200)
-    print("[2] reese84 received from Set-Cookie:", stored_reese)
-    print("[3] reese84 stored in cookie jar:", stored_reese)
-    print("[4] api key obtained:", bool(api_key))
-    print("[5] catalog request sent Apikey:", bool(api_key))
-    print("[6] catalog response parsed:", parsed["validJson"])
-    print("[7] catalog payload hotel rows:", len(parsed["hotels"]))
+    print("[2] reese84 stored in cookie jar:", stored_reese)
+    print("[3] ___utmvc stored in cookie jar:", stored_utmvc)
+    print("[4] imperva bypass ok:", stored_reese or stored_utmvc)
+    print("[5] api key obtained:", bool(api_key))
+    print("[6] catalog request sent Apikey:", bool(api_key))
+    print("[7] catalog response parsed:", parsed["validJson"])
+    print("[8] catalog payload hotel rows:", len(parsed["hotels"]))
 
     return {
         "generatedAt": datetime.now(timezone.utc).isoformat(),

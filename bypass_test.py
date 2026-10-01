@@ -1,5 +1,6 @@
-"""Test js_runner.py against the Accor WAF challenge on the catalog API."""
+"""Test the Imperva bypass against the Accor catalog API."""
 
+import argparse
 import json
 import sys
 from pathlib import Path
@@ -7,7 +8,7 @@ from urllib.parse import urlparse
 
 import requests
 
-from js_runner import run_sandboxed_script
+from imperva_bypass import ensure_bypass, solve_inline_challenge
 
 API_URL = "https://api.accor.com/catalog/v1/hotels?q=paris"
 CHALLENGE_FILE = Path("challenge.html")
@@ -25,30 +26,6 @@ def default_headers():
         "Accept-Language": "en-US,en;q=0.9",
         "Referer": "https://all.accor.com/",
     }
-
-
-def parse_cookie_string(raw):
-    cookies = {}
-    if not raw:
-        return cookies
-    for part in raw.split(";"):
-        part = part.strip()
-        if not part or "=" not in part:
-            continue
-        name, value = part.split("=", 1)
-        name = name.strip()
-        if name:
-            cookies[name] = value.strip()
-    return cookies
-
-
-def copy_session_cookies(source_session, target_session, url):
-    hostname = urlparse(url).hostname or ""
-    for cookie in source_session.cookies:
-        domain = (cookie.domain or hostname).lstrip(".")
-        if domain and hostname and not hostname.endswith(domain):
-            continue
-        target_session.cookies.set(cookie.name, cookie.value, domain=cookie.domain, path=cookie.path)
 
 
 def extract_hotels(body):
@@ -79,38 +56,18 @@ def request_catalog(session):
     return session.get(API_URL, headers=default_headers(), timeout=TIMEOUT)
 
 
-def main():
-    session = requests.Session()
-    print("=== initial request ===")
-    print("GET", API_URL)
-    response = request_catalog(session)
-    print("status:", response.status_code)
+def parse_args(argv):
+    parser = argparse.ArgumentParser(description="Test Imperva bypass on the Accor catalog API.")
+    parser.add_argument(
+        "--challenge-file",
+        type=Path,
+        metavar="FILE",
+        help="Use a saved challenge HTML file to run solve-and-retry without a live 403",
+    )
+    return parser.parse_args(argv)
 
-    solved_cookies = {}
-    if response.status_code == 403:
-        CHALLENGE_FILE.write_text(response.text, encoding="utf-8")
-        print("saved challenge HTML to", CHALLENGE_FILE)
 
-        print("\n=== solving challenge ===")
-        cookie_string = run_sandboxed_script(CHALLENGE_FILE.read_text(encoding="utf-8"))
-        print("document.cookie:", cookie_string or "(empty)")
-        solved_cookies = parse_cookie_string(cookie_string)
-        reese84 = solved_cookies.get("reese84")
-        if reese84:
-            print("reese84 extracted:", reese84[:80] + ("..." if len(reese84) > 80 else ""))
-        else:
-            print("reese84 not found in solved cookie string")
-
-        print("\n=== retry with cookies ===")
-        retry_session = requests.Session()
-        copy_session_cookies(session, retry_session, API_URL)
-        for name, value in solved_cookies.items():
-            retry_session.cookies.set(name, value, domain=".accor.com", path="/")
-        response = request_catalog(retry_session)
-        print("status:", response.status_code)
-    else:
-        print("no WAF challenge detected (expected 403 to test bypass)")
-
+def print_result(response):
     hotels = extract_hotels(response.text)
     print("\n=== result ===")
     print("final status:", response.status_code)
@@ -122,6 +79,45 @@ def main():
         print("hotels: (none in response)")
         preview = response.text[:300].replace("\n", " ")
         print("response preview:", preview)
+
+
+def main(argv=None):
+    args = parse_args(sys.argv[1:] if argv is None else argv)
+
+    session = requests.Session()
+    print("=== imperva bypass ===")
+    bypass = ensure_bypass(session, refresh=True)
+    print(json.dumps(bypass.summary(), indent=2))
+
+    print("\n=== initial request ===")
+    print("GET", API_URL)
+    response = request_catalog(session)
+    print("status:", response.status_code)
+
+    if args.challenge_file:
+        challenge_path = args.challenge_file.resolve()
+        if not challenge_path.is_file():
+            raise FileNotFoundError(f"Challenge file not found: {challenge_path}")
+        print("using challenge file:", challenge_path)
+        challenge_html = challenge_path.read_text(encoding="utf-8")
+        solved = solve_inline_challenge(session, challenge_html, referer="https://all.accor.com/")
+        print("inline challenge cookies:", sorted(solved.keys()))
+        response = request_catalog(session)
+    elif response.status_code == 403:
+        CHALLENGE_FILE.write_text(response.text, encoding="utf-8")
+        print("saved challenge HTML to", CHALLENGE_FILE)
+        solved = solve_inline_challenge(session, response.text, referer="https://all.accor.com/")
+        print("inline challenge cookies:", sorted(solved.keys()))
+        response = request_catalog(session)
+    else:
+        print("no WAF challenge detected (expected 403, or pass --challenge-file)")
+
+    hostname = urlparse(API_URL).hostname or ""
+    cookie_names = sorted({cookie.name for cookie in session.cookies if hostname.endswith((cookie.domain or hostname).lstrip("."))})
+    print("session cookies:", cookie_names)
+    print("reese84:", "reese84" in cookie_names)
+    print("___utmvc:", "___utmvc" in cookie_names)
+    print_result(response)
 
 
 if __name__ == "__main__":
