@@ -1,0 +1,150 @@
+{
+  "generatedAt": "2026-10-01T01:18:15.567916+00:00",
+  "entryUrl": "https://www.all.accor.com/",
+  "followRedirects": true,
+  "artifacts": {
+    "incapsula_script_urls": [
+      "https://all.accor.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=2141998996"
+    ],
+    "inline_script_count": 100,
+    "challenge_page_detected": true,
+    "reese84_present": false
+  },
+  "steps": [
+    {
+      "step": "1_initial_page_load",
+      "method": "GET",
+      "url": "https://all.accor.com/a/en.html",
+      "status_code": 200,
+      "request_headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+      },
+      "response_headers": {
+        "x-frame-options": "SAMEORIGIN",
+        "x-page-last-replicated": "2026-06-11T12:06:22.678Z",
+        "x-vhost": "allcom-publish",
+        "content-type": "text/html;charset=utf-8",
+        "x-content-type-options": "nosniff",
+        "accept-ranges": "bytes",
+        "x-served-by": "cache-sin-wsap440022-SIN",
+        "x-timer": "S1790769463.518893,VS0,VS0,VE1",
+        "x-cdn": "Imperva",
+        "content-encoding": "gzip",
+        "x-iinfo": "42-20620840-20695933 PNYy RT(1790768709676 752829) q(0 0 0 2) r(0 0) U24",
+        "content-length": "278984",
+        "cache-control": "public, max-age=600",
+        "date": "Thu, 01 Oct 2026 01:18:10 GMT",
+        "connection": "keep-alive",
+        "vary": "Accept-Encoding",
+        "x-cdn-forward": "Akamai",
+        "strict-transport-security": "max-age=31536000"
+      },
+      "set_cookies": [],
+      "cookies_after": {
+        "JSESSIONID": "B89C078F3C71F14D282B049F74FCD029DDB45551D3F71635696A",
+        "displayZone": "singapore",
+        "contribZone": "singapore-malaysia",
+        "userLang": "en",
+        "userLocalization": "sg",
+        "userCurrency": "SGD",
+        "affcookie": "egF+r4RKyHhlSDGT0HNOSA==",
+        "trckCookie": "eyJjdXJyZW50c291cmNlaWQiOiJBSCIsImN1cnJlbnRtZXJjaGFudGlkIjoiQUgiLCJyZXRhaW5lZHNvdXJjZWlkIjoiQUgiLCJyZXRhaW5lZG1lcmNoYW50aWQiOiJBSCJ9",
+        "_Hw2h_": ".evy4a",
+        "org": "evy",
+        "visid_incap_3039981": "MEqB1BptTIiNrIM9D2smr9C0vWoAAAAAQUIPAAAAAABkfm1NXZwWAHElr7FGA9VP",
+        "incap_ses_430_3039981": "bNi7f5RMMFwspP6A4Kr3BdG0vWoAAAAAx1QXmIt2D9dwIOF7F6cLCg=="
+      },
+      "notes": [
+        "Page references Imperva sensor script via _Incapsula_Resource.",
+        "reese84 not issued yet; browser must execute the sensor script."
+      ],
+      "body_preview": "<!DOCTYPE HTML>\n<html lang=\"en\">\n\n    <head>\n\n    <meta charset=\"UTF-8\"/>\n    <title>ALL Accor | Hotels Stays &amp; Exclusive Deals </title>\n\n    \n    <meta name=\"description\" content=\"Discover the ultimate hotel experience with ALL Accor. Explore our global portfolio of exceptional hotels and resorts, enjoy exclusive member benefits, and earn rewards with every stay.\"/>\n    \n    <meta name=\"title\" content=\"ALL Accor | Hotels Stays &amp; Exclusive Deals \"/>\n    <meta name=\"template\" content=\"all"
+    },
+    {
+      "step": "2_fetch_sensor_script_1",
+      "method": "GET",
+      "url": "https://all.accor.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=2141998996",
+      "status_code": 200,
+      "request_headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+        "Referer": "https://www.all.accor.com/"
+      },
+      "response_headers": {
+        "content-type": "application/javascript",
+        "content-encoding": "gzip",
+        "x-robots-tag": "noindex",
+        "content-length": "20396",
+        "expires": "Thu, 01 Oct 2026 01:18:13 GMT",
+        "cache-control": "max-age=0, no-cache, no-store",
+        "pragma": "no-cache",
+        "date": "Thu, 01 Oct 2026 01:18:13 GMT",
+        "connection": "keep-alive",
+        "vary": "Accept-Encoding",
+        "x-cdn-forward": "Akamai",
+        "strict-transport-security": "max-age=31536000"
+      },
+      "set_cookies": [],
+      "cookies_after": {
+        "JSESSIONID": "B89C078F3C71F14D282B049F74FCD029DDB45551D3F71635696A",
+        "displayZone": "singapore",
+        "contribZone": "singapore-malaysia",
+        "userLang": "en",
+        "userLocalization": "sg",
+        "userCurrency": "SGD",
+        "affcookie": "egF+r4RKyHhlSDGT0HNOSA==",
+        "trckCookie": "eyJjdXJyZW50c291cmNlaWQiOiJBSCIsImN1cnJlbnRtZXJjaGFudGlkIjoiQUgiLCJyZXRhaW5lZHNvdXJjZWlkIjoiQUgiLCJyZXRhaW5lZG1lcmNoYW50aWQiOiJBSCJ9",
+        "_Hw2h_": ".evy4a",
+        "org": "evy",
+        "visid_incap_3039981": "MEqB1BptTIiNrIM9D2smr9C0vWoAAAAAQUIPAAAAAABkfm1NXZwWAHElr7FGA9VP",
+        "incap_ses_430_3039981": "bNi7f5RMMFwspP6A4Kr3BdG0vWoAAAAAx1QXmIt2D9dwIOF7F6cLCg=="
+      },
+      "notes": [
+        "Browser would evaluate this JavaScript and then POST a sensor payload.",
+        "Pure HTTP clients cannot derive the signed payload from static fingerprints.",
+        "Resource is obfuscated JavaScript (~80 KB)."
+      ],
+      "body_preview": "var _0xe474=['\\x77\\x6f\\x58\\x44\\x70\\x57\\x74\\x58\\x4e\\x4d\\x4b\\x2f\\x48\\x41\\x3d\\x3d','\\x4c\\x56\\x70\\x7a\\x77\\x36\\x6f\\x52\\x46\\x77\\x3d\\x3d','\\x77\\x36\\x30\\x45\\x59\\x41\\x3d\\x3d','\\x77\\x36\\x6a\\x43\\x75\\x45\\x62\\x43\\x70\\x63\\x4f\\x77\\x77\\x34\\x51\\x36','\\x64\\x38\\x4f\\x67\\x5a\\x58\\x5a\\x31\\x48\\x77\\x3d\\x3d','\\x65\\x38\\x4b\\x4"
+    },
+    {
+      "step": "3_verification_post_not_reproduced",
+      "method": "POST",
+      "url": "https://www.all.accor.com/ (sensor endpoint; path varies by deployment)",
+      "status_code": 0,
+      "request_headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+        "Referer": "https://www.all.accor.com/",
+        "Content-Type": "application/json"
+      },
+      "response_headers": {},
+      "set_cookies": [],
+      "cookies_after": {
+        "JSESSIONID": "B89C078F3C71F14D282B049F74FCD029DDB45551D3F71635696A",
+        "displayZone": "singapore",
+        "contribZone": "singapore-malaysia",
+        "userLang": "en",
+        "userLocalization": "sg",
+        "userCurrency": "SGD",
+        "affcookie": "egF+r4RKyHhlSDGT0HNOSA==",
+        "trckCookie": "eyJjdXJyZW50c291cmNlaWQiOiJBSCIsImN1cnJlbnRtZXJjaGFudGlkIjoiQUgiLCJyZXRhaW5lZHNvdXJjZWlkIjoiQUgiLCJyZXRhaW5lZG1lcmNoYW50aWQiOiJBSCJ9",
+        "_Hw2h_": ".evy4a",
+        "org": "evy",
+        "visid_incap_3039981": "MEqB1BptTIiNrIM9D2smr9C0vWoAAAAAQUIPAAAAAABkfm1NXZwWAHElr7FGA9VP",
+        "incap_ses_430_3039981": "bNi7f5RMMFwspP6A4Kr3BdG0vWoAAAAAx1QXmIt2D9dwIOF7F6cLCg=="
+      },
+      "notes": [
+        "A real browser POSTs a dynamically computed JSON sensor blob.",
+        "The server responds with 302 and Set-Cookie: reese84=... on success.",
+        "This script intentionally does not forge that payload."
+      ],
+      "body_preview": null
+    }
+  ],
+  "summary": {
+    "reese84Obtained": false,
+    "incapsulaCookiesSeen": [
+      "visid_incap_3039981",
+      "incap_ses_430_3039981"
+    ],
+    "requiresBrowserExecution": true
+  }
+}
