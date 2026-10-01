@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-01T16:27:33.691222+00:00",
+  "generatedAt": "2026-10-01T16:31:41.491459+00:00",
   "destinations": [
     {
       "query": "paris",
@@ -6316,43 +6316,6 @@
           ]
         },
         {
-          "id": "3296",
-          "name": "ibis Paris la Defense Courbevoie",
-          "brand": "Ibis",
-          "chain": "",
-          "stars": 3,
-          "rating": 4.2,
-          "reviewCount": 609,
-          "status": "OPEN",
-          "description": "By the River Seine, the 3-star ibis Paris La Defense Courbevoie offers a comfy, affordable stay on the edge of Paris, near the La Defense business district. Some rooms have views of the Seine and the Eiffel Tower. During the day, after visiting the capital or before a concert at Paris La Defense Arena, take advantage of our bar in Courbevoie, open 24 hours, with its terrace and selection of light snacks.",
-          "lodging": "HTL",
-          "city": "La D\u00e9fense",
-          "region": "Ile-de-France",
-          "country": "France",
-          "countryCode": "FR",
-          "continent": "Europe",
-          "street": "",
-          "zipCode": "92400",
-          "lat": null,
-          "lng": null,
-          "factsheetUrl": "https://all.accor.com/hotel/3296/index.en.shtml",
-          "image": "https://m.ahstatic.com/is/image/accorhotels/aja_p_3945-30:3by2?fmt=webp&op_usm=1.75,0.3,2,0&resMode=sharp2&iccEmbed=true&icc=sRGB&dpr=on,1.5&wid=793&hei=528&qlt=80",
-          "amenities": [
-            "Bar",
-            "Electric car recharging units",
-            "Services for children",
-            "Wi-Fi",
-            "Iron",
-            "Breakfast",
-            "Wheelchair accessible hotel",
-            "100% Non Smoking Property",
-            "Air conditioning",
-            "Hearing impaired room",
-            "Private bathroom",
-            "Ecocertified"
-          ]
-        },
-        {
           "id": "2053",
           "name": "Mercure Paris Arc de Triomphe Wagram Hotel",
           "brand": "Mercure",
@@ -7473,6 +7436,43 @@
             "Wheelchair accessible hotel",
             "100% Non Smoking Property",
             "Air conditioning"
+          ]
+        },
+        {
+          "id": "3296",
+          "name": "ibis Paris la Defense Courbevoie",
+          "brand": "Ibis",
+          "chain": "",
+          "stars": 3,
+          "rating": 4.2,
+          "reviewCount": 609,
+          "status": "OPEN",
+          "description": "By the River Seine, the 3-star ibis Paris La Defense Courbevoie offers a comfy, affordable stay on the edge of Paris, near the La Defense business district. Some rooms have views of the Seine and the Eiffel Tower. During the day, after visiting the capital or before a concert at Paris La Defense Arena, take advantage of our bar in Courbevoie, open 24 hours, with its terrace and selection of light snacks.",
+          "lodging": "HTL",
+          "city": "La D\u00e9fense",
+          "region": "Ile-de-France",
+          "country": "France",
+          "countryCode": "FR",
+          "continent": "Europe",
+          "street": "",
+          "zipCode": "92400",
+          "lat": null,
+          "lng": null,
+          "factsheetUrl": "https://all.accor.com/hotel/3296/index.en.shtml",
+          "image": "https://m.ahstatic.com/is/image/accorhotels/aja_p_3945-30:3by2?fmt=webp&op_usm=1.75,0.3,2,0&resMode=sharp2&iccEmbed=true&icc=sRGB&dpr=on,1.5&wid=793&hei=528&qlt=80",
+          "amenities": [
+            "Bar",
+            "Electric car recharging units",
+            "Services for children",
+            "Wi-Fi",
+            "Iron",
+            "Breakfast",
+            "Wheelchair accessible hotel",
+            "100% Non Smoking Property",
+            "Air conditioning",
+            "Hearing impaired room",
+            "Private bathroom",
+            "Ecocertified"
           ]
         },
         {
